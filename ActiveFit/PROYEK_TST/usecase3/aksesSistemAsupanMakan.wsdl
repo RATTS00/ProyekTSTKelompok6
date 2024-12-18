@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://localhost/ActiveFit/PROYEK_TST/usecase3/server.php" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="AksesSistemAsupanMakan" targetNamespace="http://localhost//ActiveFit/PROYEK_TST/usecase3/server.php">
+  <types>
+    <xsd:schema targetNamespace="http://localhost/ActiveFit/PROYEK_TST/usecase3/server.php">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+    </xsd:schema>
+  </types>
+  <portType name="AksesSistemAsupanMakanPort">
+    <operation name="getAkses">
+      <input message="tns:getAksesIn"/>
+      <output message="tns:getAksesOut"/>
+    </operation>
+    <operation name="cekRiwayatAktivitas">
+      <input message="tns:cekRiwayatAktivitasIn"/>
+      <output message="tns:cekRiwayatAktivitasOut"/>
+    </operation>
+    <operation name="getDataMakanan">
+      <input message="tns:getDataMakananIn"/>
+      <output message="tns:getDataMakananOut"/>
+    </operation>
+  </portType>
+  <binding name="AksesSistemAsupanMakanBinding" type="tns:AksesSistemAsupanMakanPort">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="getAkses">
+      <soap:operation soapAction="http://localhost/ActiveFit/PROYEK_TST/usecase3/server.php#getAkses"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/ActiveFit/PROYEK_TST/usecase3/server.php"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/ActiveFit/PROYEK_TST/usecase3/server.php"/>
+      </output>
+    </operation>
+    <operation name="cekRiwayatAktivitas">
+      <soap:operation soapAction="http://localhost/ActiveFit/PROYEK_TST/usecase3/server.php#cekRiwayatAktivitas"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/ActiveFit/PROYEK_TST/usecase3/server.php"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/ActiveFit/PROYEK_TST/usecase3/server.php"/>
+      </output>
+    </operation>
+    <operation name="getDataMakanan">
+      <soap:operation soapAction="http://localhost/ActiveFit/PROYEK_TST/usecase3/server.php#getDataMakanan"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/ActiveFit/PROYEK_TST/usecase3/server.php"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/ActiveFit/PROYEK_TST/usecase3/server.php"/>
+      </output>
+    </operation>
+  </binding>
+  <message name="getAksesIn">
+    <part name="penggunaaanTrackerOlahraga" type="xsd:boolean"/>
+  </message>
+  <message name="getAksesOut">
+    <part name="return" type="soap-enc:Array"/>
+  </message>
+  <message name="cekRiwayatAktivitasIn"/>
+  <message name="cekRiwayatAktivitasOut">
+    <part name="return" type="xsd:boolean"/>
+  </message>
+  <message name="getDataMakananIn"/>
+  <message name="getDataMakananOut">
+    <part name="return" type="soap-enc:Array"/>
+  </message>
+  <service name="AksesSistemAsupanMakanService">
+    <port name="AksesSistemAsupanMakanPort" binding="tns:AksesSistemAsupanMakanBinding">
+      <soap:address location="http://localhost/ActiveFit/PROYEK_TST/usecase3/server.php"/>
+    </port>
+  </service>
+</definitions>

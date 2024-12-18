@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://localhost/ActiveFit/dinara2/xserver.php" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="Diskon" targetNamespace="http://localhost/ActiveFit/dinara2/xserver.php">
+  <types>
+    <xsd:schema targetNamespace="http://localhost/ActiveFit/dinara2/xserver.php">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+    </xsd:schema>
+  </types>
+  <portType name="DiskonPort">
+    <operation name="getDiskon">
+      <input message="tns:getDiskonIn"/>
+      <output message="tns:getDiskonOut"/>
+    </operation>
+    <operation name="getHistory">
+      <input message="tns:getHistoryIn"/>
+      <output message="tns:getHistoryOut"/>
+    </operation>
+  </portType>
+  <binding name="DiskonBinding" type="tns:DiskonPort">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="getDiskon">
+      <soap:operation soapAction="http://localhost/ActiveFit/dinara2/xserver.php#getDiskon"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/ActiveFit/dinara2/xserver.php"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/ActiveFit/dinara2/xserver.php"/>
+      </output>
+    </operation>
+    <operation name="getHistory">
+      <soap:operation soapAction="http://localhost/ActiveFit/dinara2/xserver.php#getHistory"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/ActiveFit/dinara2/xserver.php"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/ActiveFit/dinara2/xserver.php"/>
+      </output>
+    </operation>
+  </binding>
+  <message name="getDiskonIn">
+    <part name="steps" type="xsd:int"/>
+  </message>
+  <message name="getDiskonOut">
+    <part name="return" type="xsd:anyType"/>
+  </message>
+  <message name="getHistoryIn"/>
+  <message name="getHistoryOut">
+    <part name="return" type="soap-enc:Array"/>
+  </message>
+  <service name="DiskonService">
+    <port name="DiskonPort" binding="tns:DiskonBinding">
+      <soap:address location="http://localhost/ActiveFit/dinara2/xserver.php"/>
+    </port>
+  </service>
+</definitions>
